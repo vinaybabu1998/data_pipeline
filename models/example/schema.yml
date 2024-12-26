@@ -11,14 +11,6 @@ models:
                 - unique
                 - not_null
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
 sources:
   - name: raw
     database: data-pipeline-project-445905  # Specify your database name here
@@ -26,3 +18,5 @@ sources:
     tables:
       - name: raw_sales  # Define the table as raw_sales
         description: "Raw sales data table"
+      - name: raw_customers  # Define the table as raw_customers
+        description: "Raw customers data table"

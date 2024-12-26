@@ -34,6 +34,11 @@ valid_foreign_keys AS (
         END AS valid_product_id
 
     FROM standardized_sales ss
+    LEFT JOIN {{ source('raw', 'raw_customers') }} c
+        ON ss.customer_id = c.customer_id
+        
+    LEFT JOIN {{ source('raw', 'raw_products') }} p
+        ON ss.product_id = p.product_id
 )
 
 SELECT
