@@ -20,3 +20,5 @@ sources:
         description: "Raw sales data table"
       - name: raw_customers  # Define the table as raw_customers
         description: "Raw customers data table"
+      - name: raw_products  # Define the table as raw_products
+        description: "Raw products data table"
