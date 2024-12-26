@@ -43,11 +43,11 @@ valid_foreign_keys AS (
 )
 
 SELECT
+    sale_id,
     sale_date,
     amount,
     valid_customer_id AS customer_id,
-    valid_product_id AS product_id,
-    sale_id
+    valid_product_id AS product_id
 FROM valid_foreign_keys
 WHERE valid_customer_id IS NOT NULL
   AND valid_product_id IS NOT NULL
