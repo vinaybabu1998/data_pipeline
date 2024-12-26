@@ -2,7 +2,6 @@
 
 WITH standardized_sales AS (
     SELECT
-        sale_id,
         -- Standardizing the sale_date format (e.g., YYYY-MM-DD)
         CAST(DATE_TRUNC(sale_date, DAY) AS DATE) AS sale_date,
         
@@ -11,7 +10,8 @@ WITH standardized_sales AS (
         
         -- Ensuring valid foreign key references (e.g., customer_id, product_id) using joins with reference tables
         customer_id,
-        product_id
+        product_id,
+        sale_id
         
     FROM {{ source('raw', 'raw_sales') }}
 ),
