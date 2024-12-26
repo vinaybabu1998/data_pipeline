@@ -1,27 +1,51 @@
+-- models/clean_sales.sql
 
-/*
-    Welcome to your first dbt model!
-    Did you know that you can also configure models directly within SQL files?
-    This will override configurations stated in dbt_project.yml
+WITH standardized_sales AS (
+    SELECT
+        -- Standardizing the sale_date format (e.g., YYYY-MM-DD)
+        CAST(DATE_TRUNC('DAY', {{ sale_date_format('sale_date') }}) AS DATE) AS sale_date,
+        
+        -- Handling null values in the amount column by replacing with 0 or a default value
+        COALESCE(amount, 0) AS amount,
+        
+        -- Ensuring valid foreign key references (e.g., customer_id, product_id) using joins with reference tables
+        customer_id,
+        product_id
+        
+    FROM {{ ref('raw_sales') }}
+),
 
-    Try changing "table" to "view" below
-*/
+valid_foreign_keys AS (
+    SELECT
+        ss.sale_date,
+        ss.amount,
+        ss.customer_id,
+        ss.product_id,
+        
+        -- Ensuring valid foreign key by joining with customers and products tables
+        CASE 
+            WHEN c.customer_id IS NOT NULL THEN ss.customer_id
+            ELSE NULL
+        END AS valid_customer_id,
+        
+        CASE 
+            WHEN p.product_id IS NOT NULL THEN ss.product_id
+            ELSE NULL
+        END AS valid_product_id
 
-{{ config(materialized='table') }}
-
-with source_data as (
-
-    select 1 as id
-    union all
-    select null as id
-
+    FROM standardized_sales ss
+    LEFT JOIN {{ ref('raw_customers') }} c
+        ON ss.customer_id = c.customer_id
+        
+    LEFT JOIN {{ ref('raw_products') }} p
+        ON ss.product_id = p.product_id
 )
 
-select *
-from source_data
-
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not null
+SELECT
+    sale_date,
+    amount,
+    valid_customer_id AS customer_id,
+    valid_product_id AS product_id
+FROM valid_foreign_keys
+WHERE valid_customer_id IS NOT NULL
+  AND valid_product_id IS NOT NULL
