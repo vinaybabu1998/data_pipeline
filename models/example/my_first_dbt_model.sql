@@ -12,7 +12,7 @@ WITH standardized_sales AS (
         customer_id,
         product_id
         
-    FROM {{ ref('raw_sales') }}
+    FROM {{ source('raw', 'raw_sales') }}
 ),
 
 valid_foreign_keys AS (
@@ -34,10 +34,10 @@ valid_foreign_keys AS (
         END AS valid_product_id
 
     FROM standardized_sales ss
-    LEFT JOIN {{ ref('raw_customers') }} c
+    LEFT JOIN {{ source('raw', 'raw_customers') }} c
         ON ss.customer_id = c.customer_id
         
-    LEFT JOIN {{ ref('raw_products') }} p
+    LEFT JOIN {{ source('raw', 'raw_products') }} p
         ON ss.product_id = p.product_id
 )
 

@@ -1,0 +1,12 @@
+version: 2
+sources:
+  - name: raw
+    database: data-pipeline-project-445905  # Replace with your BigQuery project ID
+    schema: big_query_id  # Replace with your BigQuery dataset name
+    tables:
+      - name: raw_sales  # This is the actual table in your dataset
+        description: "Raw sales data table"
+      - name: raw_customers
+        description: "Raw customers data table"
+      - name: raw_products
+        description: "Raw products data table"
