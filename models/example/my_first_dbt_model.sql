@@ -2,6 +2,7 @@
 
 WITH standardized_sales AS (
     SELECT
+        sale_id,
         -- Standardizing the sale_date format (e.g., YYYY-MM-DD)
         CAST(DATE_TRUNC(sale_date, DAY) AS DATE) AS sale_date,
         
