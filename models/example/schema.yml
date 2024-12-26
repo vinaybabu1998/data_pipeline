@@ -2,7 +2,7 @@
 version: 2
 
 models:
-    - name: clean_sales
+    - name: my_first_dbt_model
       description: "A starter dbt model"
       columns:
           - name: id
