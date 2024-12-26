@@ -6,6 +6,6 @@ default:
       project: data-pipeline-project-445905
       dataset: dbt_vkv
       location: EU
-      threads: 4
+      threads: 5
       keyfile: /path/to/your-service-account-key.json
   target: dev
