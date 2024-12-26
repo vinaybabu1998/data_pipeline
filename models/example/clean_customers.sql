@@ -28,8 +28,8 @@ valid_foreign_keys AS (
         END AS valid_customer_id
 
     FROM standardized_customers cs
-    LEFT JOIN {{ source('raw', 'raw_customers') }} c
-        ON ss.customer_id = c.customer_id
+    LEFT JOIN {{ source('raw', 'raw_sales') }} s
+        ON ss.customer_id = s.customer_id
 
 )
 
