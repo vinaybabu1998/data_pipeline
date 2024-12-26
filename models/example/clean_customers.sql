@@ -19,11 +19,10 @@ valid_foreign_keys AS (
     SELECT
         cs.signup_date,
         cs.name,
-        cs.customer_id,
         cs.region,
-        -- Ensuring valid foreign key by joining with customers and products tables
+        -- Ensuring valid foreign key by joining with customers table
         CASE 
-            WHEN c.customer_id IS NOT NULL THEN cs.customer_id
+            WHEN cs.customer_id IS NOT NULL THEN s.customer_id
             ELSE NULL
         END AS valid_customer_id
 
