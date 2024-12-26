@@ -46,7 +46,7 @@ SELECT
     sale_date,
     amount,
     valid_customer_id AS customer_id,
-    valid_product_id AS product_id
+    valid_product_id AS product_id,
     sale_id
 FROM valid_foreign_keys
 WHERE valid_customer_id IS NOT NULL
