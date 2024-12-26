@@ -3,7 +3,7 @@
 WITH standardized_sales AS (
     SELECT
         -- Standardizing the sale_date format (e.g., YYYY-MM-DD)
-        CAST(DATE_TRUNC('DAY', {{ sale_date_format('sale_date') }}) AS DATE) AS sale_date,
+        CAST(DATE_TRUNC(sale_date, DAY) AS DATE) AS sale_date,
         
         -- Handling null values in the amount column by replacing with 0 or a default value
         COALESCE(amount, 0) AS amount,
