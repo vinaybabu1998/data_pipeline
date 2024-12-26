@@ -19,3 +19,10 @@ models:
             tests:
                 - unique
                 - not_null
+sources:
+  - name: raw
+    database: data-pipeline-project-445905  # Specify your database name here
+    schema: big_query_id  # Specify your schema (dataset) name here
+    tables:
+      - name: raw_sales  # Define the table as raw_sales
+        description: "Raw sales data table"
