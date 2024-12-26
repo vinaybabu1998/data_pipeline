@@ -22,7 +22,7 @@ valid_foreign_keys AS (
         ss.amount,
         ss.customer_id,
         ss.product_id,
-        ss.sale_id
+        ss.sale_id,
         -- Ensuring valid foreign key by joining with customers and products tables
         CASE 
             WHEN c.customer_id IS NOT NULL THEN ss.customer_id
