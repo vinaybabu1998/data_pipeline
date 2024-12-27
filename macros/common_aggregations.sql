@@ -11,6 +11,7 @@ WITH aggregated_data AS (
 SELECT
     total_value,
     average_value,
-    median_value
+    median_value,
+    '{{ column_name }}' AS column_name
 FROM aggregated_data
 {% endmacro %}
