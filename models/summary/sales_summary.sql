@@ -1,4 +1,7 @@
 -- models/sales_summary.sql
+{{ config(
+    materialized='table'
+) }}
 
 WITH monthly_sales AS (
     SELECT
