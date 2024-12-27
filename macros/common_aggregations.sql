@@ -5,7 +5,7 @@ WITH aggregated_data AS (
     SELECT
         SUM({{ column_name }}) AS total_value,
         AVG({{ column_name }}) AS average_value,
-        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY {{ column_name }}) AS median_value
+        ARRAY_AGG({{ column_name }} ORDER BY {{ column_name }} LIMIT 2)[OFFSET(ORDINAL(1))] AS median_value
     FROM {{ table_name }}
 )
 SELECT
