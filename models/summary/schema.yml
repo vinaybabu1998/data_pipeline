@@ -10,6 +10,14 @@ models:
             tests:
                 - unique
                 - not_null
+    - name: common_aggregations
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
 sources:
   - name: clean
     database: data-pipeline-project-445905  # Specify your database name here
