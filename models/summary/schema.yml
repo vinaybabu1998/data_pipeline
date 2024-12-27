@@ -11,7 +11,7 @@ models:
                 - unique
                 - not_null
 sources:
-  - name: raw
+  - name: clean
     database: data-pipeline-project-445905  # Specify your database name here
     schema: dbt_vkv  # Specify your schema (dataset) name here
     tables:
