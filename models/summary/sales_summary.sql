@@ -1,9 +1,5 @@
 -- models/sales_summary.sql
 
-{{ config(
-    materialized='table'
-) }}
-
 WITH monthly_sales AS (
     SELECT
         -- Extracting the year and month from the sale_date
