@@ -19,7 +19,7 @@ valid_foreign_keys AS (
         ps.product_name,
         ps.category,
         ps.product_id,
-        ps.price
+        ps.price,
         -- Ensuring valid foreign key by joining with sales table
         CASE 
             WHEN ps.product_id IS NOT NULL THEN s.product_id
