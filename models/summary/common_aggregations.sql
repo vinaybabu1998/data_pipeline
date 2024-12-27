@@ -3,7 +3,7 @@
 {{ config(materialized='view') }}
 
 -- Use the common_aggregations macro for the 'clean_sales' table and the 'amount' column
-{{ common_aggregations('data-pipeline-project-445905.dbt_vkv.clean_sales', 'amount', 'month') }}
+{{ common_aggregations('clean_sales', 'amount', 'month') }}
 
 -- UNION ALL
 
