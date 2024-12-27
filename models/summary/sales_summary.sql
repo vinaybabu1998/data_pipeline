@@ -21,4 +21,4 @@ SELECT
     total_revenue
 FROM monthly_sales
 ORDER BY
-    sale_month, category;
+    sale_month, category
