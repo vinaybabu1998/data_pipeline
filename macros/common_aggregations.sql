@@ -30,6 +30,6 @@
         median_value,
         '{{ column_name }}' AS column_name  -- Add the column name in the output for reference
     FROM aggregated_data
-    ORDER BY period;
+    ORDER BY period
 
 {% endmacro %}
