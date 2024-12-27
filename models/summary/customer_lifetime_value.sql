@@ -16,7 +16,11 @@ WITH customer_spending AS (
 )
 
 SELECT
-    customer_id,
-    total_spending
-FROM customer_spending
-ORDER BY total_spending DESC
+    customers.customer_id,
+    customers.name,
+    spending.total_spending
+FROM customer_spending AS spending
+JOIN `data-pipeline-project-445905`.`dbt_vkv`.`clean_customers` AS customers
+    ON spending.customer_id = customers.customer_id
+ORDER BY
+    spending.total_spending DESC
