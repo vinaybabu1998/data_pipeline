@@ -25,6 +25,6 @@ SELECT
     median_value,
     column_name
 FROM aggregated_data
-ORDER BY period;
+ORDER BY period
 
 {% endmacro %}

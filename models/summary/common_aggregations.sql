@@ -1,11 +1,10 @@
--- models/summary/common_aggregations_model.sql
-
 {{ config(materialized='view') }}
 
--- Use the common_aggregations macro for the 'clean_sales' table and the 'amount' column
-{{ common_aggregations('clean_sales', 'amount', 'month') }}
+-- Use the macro for 'clean_sales' table, 'amount' column, and 'MONTH' as time period (default)
+{{ common_aggregations('clean_sales', 'amount') }}
 
--- UNION ALL
+-- Use the macro for 'clean_products' table, 'price' column, and 'QUARTER' as time period
+{{ common_aggregations('clean_products', 'price', 'QUARTER') }}
 
--- -- Use the same macro for the 'clean_products' table and the 'price' column
--- SELECT * FROM {{ common_aggregations('data-pipeline-project-445905.dbt_vkv.clean_products', 'price', 'quarter') }}
+-- Use the macro for 'clean_sales' table, 'amount' column, and 'YEAR' as time period
+{{ common_aggregations('clean_sales', 'amount', 'YEAR') }}
