@@ -5,7 +5,7 @@ WITH aggregated_data AS (
     SELECT
         SUM({{ column_name }}) AS total_value,
         AVG({{ column_name }}) AS average_value,
-        ARRAY_AGG({{ column_name }} ORDER BY {{ column_name }} LIMIT 2)[OFFSET(SAFE_OFFSET(1))] AS median_value
+        ARRAY_AGG({{ column_name }} ORDER BY {{ column_name }} LIMIT 2)[SAFE_OFFSET(1)] AS median_value
     FROM {{ table_name }}
 )
 SELECT
