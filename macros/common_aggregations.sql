@@ -12,5 +12,5 @@ SELECT
     total_value,
     average_value,
     median_value
-FROM aggregated_data;
+FROM aggregated_data
 {% endmacro %}
