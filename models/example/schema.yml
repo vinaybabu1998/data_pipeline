@@ -19,6 +19,14 @@ models:
             tests:
                 - unique
                 - not_null
+    - name: clean_products
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
 sources:
   - name: raw
     database: data-pipeline-project-445905  # Specify your database name here

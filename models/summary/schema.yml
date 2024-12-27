@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+    - name: sales_summary
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+sources:
+  - name: raw
+    database: data-pipeline-project-445905  # Specify your database name here
+    schema: dbt_vkv  # Specify your schema (dataset) name here
+    tables:
+      - name: clean_sales  # Define the table as raw_sales
+        description: "Raw sales data table"
+      - name: clean_customers  # Define the table as raw_customers
+        description: "Raw customers data table"
+      - name: clean_products  # Define the table as raw_products
+        description: "Raw products data table"
