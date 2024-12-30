@@ -1,7 +1,7 @@
 {% macro common_aggregations(table_name, column_name, time_period) %}
 WITH aggregated_data AS (
     SELECT
-        DATE_TRUNC(order_date, {{ time_period }}) AS period,
+        DATE_TRUNC(order_date, {{ time_period }}) AS period, -- Dynamically adjust time period
         SUM({{ column_name }}) AS total_value,
         AVG({{ column_name }}) AS average_value,
         ARRAY_AGG({{ column_name }} ORDER BY {{ column_name }} LIMIT 2)[SAFE_OFFSET(1)] AS median_value,
