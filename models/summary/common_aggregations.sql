@@ -1,10 +1,14 @@
-{{ config(materialized='view') }}
+create or replace view `data-pipeline-project-445905`.`dbt_vkv`.`common_aggregations`
+OPTIONS()
+as 
 
--- Use the macro for 'clean_sales' table, 'amount' column, and 'MONTH' as time period (default)
-{{ common_aggregations('clean_sales', 'amount') }}
+{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_sales`', 'amount', 'MONTH') }}
 
--- -- Use the macro for 'clean_products' table, 'price' column, and 'QUARTER' as time period
--- {{ common_aggregations('clean_products', 'price', 'QUARTER') }}
+UNION ALL
 
--- -- Use the macro for 'clean_sales' table, 'amount' column, and 'YEAR' as time period
--- {{ common_aggregations('clean_sales', 'amount', 'YEAR') }}
+{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_products`', 'price', 'QUARTER') }}
+
+UNION ALL
+
+{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_sales`', 'amount', 'YEAR') }}
+;
