@@ -1,4 +1,4 @@
-{% macro calculate_aggregations(numeric_column, date_column, start_date, end_date, time_period='monthly') %}
+{% macro common_aggregations(numeric_column, date_column, start_date, end_date, time_period='monthly') %}
     WITH data AS (
         SELECT
             {{ numeric_column }},
