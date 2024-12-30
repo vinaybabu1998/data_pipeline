@@ -1,10 +1,5 @@
-{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_sales`', 'amount', 'MONTH') }}
+WITH aggregated_data AS (
+    {{ calculate_aggregations('price', 'sale_date', '2024-01-01', '2024-12-31', 'monthly') }}
+)
 
-UNION ALL
-
-{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_products`', 'price', 'QUARTER') }}
-
-UNION ALL
-
-{{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_sales`', 'amount', 'YEAR') }}
-
+SELECT * FROM aggregated_data;
