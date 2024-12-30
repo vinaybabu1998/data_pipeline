@@ -4,7 +4,7 @@
             {{ numeric_column }},
             {{ date_column }}
         FROM
-            `data-pipeline-project-445905`.`dbt_vkv`.`clean_sales`  -- Replace with your actual table reference or name
+            {{ ref('clean_sales') }}  -- Use the correct table reference
         WHERE
             {{ date_column }} BETWEEN '{{ start_date }}' AND '{{ end_date }}'
     )
