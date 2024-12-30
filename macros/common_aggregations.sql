@@ -34,5 +34,5 @@
             EXTRACT(YEAR FROM {{ date_column }})
         {% endif %}
     ORDER BY
-        period;
+        period
 {% endmacro %}
