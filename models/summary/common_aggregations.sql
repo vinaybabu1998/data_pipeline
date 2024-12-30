@@ -11,4 +11,4 @@ UNION ALL
 UNION ALL
 
 {{ common_aggregations('`data-pipeline-project-445905.dbt_vkv.clean_sales`', 'amount', 'YEAR') }}
-;
+
