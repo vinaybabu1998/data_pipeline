@@ -1,5 +1,8 @@
-WITH aggregated_data AS (
-    {{ calculate_aggregations('price', 'sale_date', '2024-01-01', '2024-12-31', 'monthly') }}
-)
-
-SELECT * FROM aggregated_data
+{{ 
+  common_aggregations(
+    table_name='`data-pipeline-project-445905.dbt_vkv.clean_sales`',
+    date_column='sale_date',
+    numeric_column='amount',
+    period='month'
+  ) 
+}}
